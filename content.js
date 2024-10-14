@@ -5,7 +5,7 @@ const scriptContent = `
         const isUtagView = args.some(arg => typeof arg === 'string' && arg.includes('utag.view'));
         const isUtagLink = args.some(arg => typeof arg === 'string' && arg.includes('utag.link'));
         if (isUtagView || isUtagLink) {
-            window.postMessage({ type: "FROM_PAGE", text: args }, "*");
+            window.postMessage({ type: "FROM_PAGE", text: JSON.stringify(args) }, "*");
         }
     };
 `;
@@ -21,7 +21,6 @@ window.addEventListener("message", function(event) {
         return;
 
     if (event.data.type && (event.data.type == "FROM_PAGE")) {
-        console.log("Content script received: " + JSON.stringify(event.data.text));
-        chrome.runtime.sendMessage({type: "utagEvent", data: JSON.stringify(event.data.text)});
+        chrome.runtime.sendMessage({type: "utagEvent", data: event.data.text});
     }
 }, false);
