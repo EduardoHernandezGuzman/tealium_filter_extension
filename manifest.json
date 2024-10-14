@@ -1,10 +1,11 @@
 {
     "manifest_version": 2,
-    "name": "Tealium Filter Extension",
+    "name": "Eduardo Tealium Filter Extension",
     "version": "1.0",
     "description": "Filtra y muestra sólo los eventos utag.view y utag.link en la consola.",
     "permissions": [
-        "tabs", "<all_urls>"
+        "webRequest",
+        "<all_urls>"
     ],
     "background": {
         "scripts": ["background.js"],
