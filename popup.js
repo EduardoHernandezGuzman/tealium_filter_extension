@@ -1,8 +1,10 @@
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if (message.type === "utagEvent") {
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.runtime.sendMessage("getUtagEvents", function(response) {
         const eventsList = document.getElementById('eventsList');
-        const li = document.createElement('li');
-        li.textContent = JSON.stringify(message.data);
-        eventsList.appendChild(li);
-    }
+        response.forEach(event => {
+            const li = document.createElement('li');
+            li.textContent = event;
+            eventsList.appendChild(li);
+        });
+    });
 });
