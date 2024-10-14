@@ -21,7 +21,7 @@ window.addEventListener("message", function(event) {
         return;
 
     if (event.data.type && (event.data.type == "FROM_PAGE")) {
-        console.log("Content script received: " + event.data.text);
-        chrome.runtime.sendMessage({type: "utagEvent", data: event.data.text});
+        console.log("Content script received: " + JSON.stringify(event.data.text));
+        chrome.runtime.sendMessage({type: "utagEvent", data: JSON.stringify(event.data.text)});
     }
 }, false);
