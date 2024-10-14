@@ -1,3 +1,5 @@
+let utagEvents = [];
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "utagEvent") {
         utagEvents.push(message.data);
