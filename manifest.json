@@ -11,7 +11,8 @@
         "<all_urls>"
     ],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "persistent": true
     },
     "devtools_page": "devtools.html",
     "content_scripts": [
