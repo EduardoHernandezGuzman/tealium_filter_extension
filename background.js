@@ -1,10 +1,5 @@
-let utagEvents = [];
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "utagEvent") {
-        utagEvents.push(message.data);
-        console.log("utagEvent capturado:", message.data);
-    } else if (message.type === "getUtagEvents") {
-        sendResponse(utagEvents);
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if (changeInfo.status == 'complete') {
+        chrome.tabs.executeScript(tabId, {file: "content.js"});
     }
 });
