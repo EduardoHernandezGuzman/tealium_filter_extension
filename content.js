@@ -14,8 +14,7 @@ scriptEl.textContent = scriptContent;
 (document.head||document.documentElement).appendChild(scriptEl);
 scriptEl.remove();
 
-window.addEventListener("message", function(event) {
-    // Solo aceptamos mensajes de nosotros mismos
+window.addEventListener("message", function(event) 
     if (event.source != window)
         return;
 
